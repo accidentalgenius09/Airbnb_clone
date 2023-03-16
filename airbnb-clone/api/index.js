@@ -16,13 +16,13 @@ app.use(
     origin: "http://localhost:3000",
   })
 );
+app.use(cookieParser())
 
 mongoose.connect("mongodb://localhost:27017/Todo");
 
 app.get("/test", (req, res) => {
   res.json("test ok");
 });
-
 app.post("/register",async(req, res) => {
   const { name, email, password } = req.body;
   try{
@@ -71,6 +71,7 @@ app.post('/login',async(req,res)=>{
 //         res.json(null)
 //     }
 // })
+
 
 app.listen(3001, () => {
   console.log("Server running successfully");
